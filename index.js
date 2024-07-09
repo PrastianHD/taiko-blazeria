@@ -40,7 +40,7 @@ async function main() {
 
     function generateRandomAmount() {
         const amounts = Math.floor(Math.random() * 90) + 10;
-        const amountInETH = "0.0000000" + amounts.toString().padStart(2, '0');
+        const amountInETH = "0.00000" + amounts.toString().padStart(2, '0');
         return ethers.parseUnits(amountInETH, 'ether'); 
     }
 
@@ -57,7 +57,7 @@ async function main() {
                 try {
                     const deposit = await contractWETH.deposit({ value: generateRandomAmount() });
                     log('SUCCESS', `Deposit sent with hash: ${deposit.hash}`);
-                    const withdraw = await contractWETH.withdraw(ethers.parseEther("0.00000001"));
+                    const withdraw = await contractWETH.withdraw(ethers.parseEther("0.000005"));
                     log('SUCCESS', `Withdraw sent with hash: ${withdraw.hash}`);
 
                     successCount++;
